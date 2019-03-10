@@ -16,3 +16,5 @@ rails c
 
 https://localhost:3000 にアクセスすると見られます！
 ![image.png](https://qiita-image-store.s3.amazonaws.com/0/124445/3d9bb315-f810-32ae-d301-a9cfb395e12d.png)
+
+see https://qiita.com/junara/items/3e4f3fceaebf72171f93
