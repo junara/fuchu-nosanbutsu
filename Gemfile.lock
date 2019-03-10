@@ -112,6 +112,7 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
+    pg (1.1.4)
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
@@ -219,6 +220,7 @@ DEPENDENCIES
   chromedriver-helper
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  pg
   puma (~> 3.11)
   rails (~> 6.0.0.beta1)
   ransack
@@ -233,7 +235,7 @@ DEPENDENCIES
   webpacker (>= 4.0.0.rc.3)
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.6.1p33
 
 BUNDLED WITH
-   1.16.6
+   1.17.2
