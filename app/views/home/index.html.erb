@@ -1,10 +1,11 @@
+<%= javascript_pack_tag 'home' %>
 <h2>
   府中産農産物直売所一覧
 </h2>
 
 <div>
   <%= form_with url: root_path, method: :get, local: true do |f| %>
-    <%= f.text_field :keyword, value: params[:keyword], autocomplete: 'off' %>
+    <%= f.text_field :keyword, value: params[:keyword], autocomplete: 'off', id: 'store_search' %>
     <%= f.submit '検索' %>
   <% end %>
 </div>
