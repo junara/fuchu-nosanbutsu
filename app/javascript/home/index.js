@@ -2,34 +2,50 @@ import $ from 'jquery';
 
 require('selectize');
 
-const autocomplete_path = (query) => {
+const url = (query) => {
   return `/ajax/item_autocomplete?keyword=${encodeURIComponent(query)}`
+};
+
+const items = (data) => {
+  return data.map((item) => {
+    return {
+      title: item['attributes']['name']
+    }
+  })
+};
+
+const renderOption = (item, escape) => {
+  return `<div><span>${escape(item.title ? item.title : '')}</span></div>`
+};
+
+const getAutocomplete = (query, callback) => {
+  $.ajax({
+    url: url(query),
+    type: 'GET',
+    error: () => {
+      callback()
+    },
+    success: (res) => {
+      callback(items(res.data))
+    }
+  })
 };
 
 const addSelectize = () => {
   $('#store_search').selectize({
-    searchField: ['name'],
-    labelField: 'name',
-    valueField: 'name',
+    searchField: ['title'],
+    labelField: 'title',
+    valueField: 'title',
     closeAfterSelect: true,
     create: true,
     render: {
-      option: function (item, escape) {
-        return `<div><span>${escape(item.name ? item.name : '')}</span></div>`
+      option: (item, escape) => {
+        return renderOption(item, escape)
       }
     },
-    load: function (query, callback) {
+    load: (query, callback) => {
       if (!query.length) return callback();
-      $.ajax({
-        url: autocomplete_path(query),
-        type: 'GET',
-        error: function () {
-          callback()
-        },
-        success: function (res) {
-          callback(res.data)
-        }
-      })
+      getAutocomplete(query, callback)
     }
   })
 };
