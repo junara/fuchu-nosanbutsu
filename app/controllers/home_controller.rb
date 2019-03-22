@@ -6,6 +6,7 @@ class HomeController < ApplicationController
   private
 
   def split_queries(str)
+    return nil unless str
     str.split(',')
   end
 end
