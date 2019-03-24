@@ -65,3 +65,6 @@ gem 'activerecord-import'
 gem 'ransack'
 
 gem 'fast_jsonapi'
+
+gem 'dotenv-rails'
+gem 'rubyfuri'

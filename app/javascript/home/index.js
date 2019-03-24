@@ -10,6 +10,7 @@ const items = (data) => {
   return data.map((item) => {
     return {
       text: item['attributes']['name'],
+      sub_text: item['attributes']['name_hiragana'], // ひらがなでも検索結果を絞り込めるようにする
       label: item['attributes']['name'],
       value: item['attributes']['name']
     }
@@ -39,7 +40,7 @@ const getAutocomplete = (query, callback) => {
 
 const addSelectize = () => {
   $('#store_search').selectize({
-    searchField: ['text'], // 入力値のフィルター対象
+    searchField: ['text', 'sub_text'], // 入力値のフィルター対象、ひらがなでも検索結果を絞り込めるようにする
     labelField: 'label', // 表示させるラベル
     valueField: 'value', // inputのvalue
     closeAfterSelect: true,

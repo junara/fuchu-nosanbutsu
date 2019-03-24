@@ -7,7 +7,7 @@ class ItemImporter
     ActiveRecord::Base.transaction do
       Item.delete_all
       list = []
-      item_names.uniq.compact.each do |item_name|
+      item_names.uniq.reject(&:blank?).each do |item_name|
         list << Item.new(name: item_name)
       end
       Item.import list
@@ -25,6 +25,6 @@ class ItemImporter
 
   def custom_split(str)
     return [] if str.nil?
-    str.split(/・|\(|（|）|、|：|\n|　|\)| /)
+    str.gsub(/ほか|など|あり/, '').split(/・|\(|（|）|、|：|\n|　|\)| /)
   end
 end
